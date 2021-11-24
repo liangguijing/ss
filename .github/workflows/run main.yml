@@ -11,10 +11,10 @@ name: run main
 on:
     workflow_dispatch:
     schedule:
-     - cron: 00 20 * * *
+     - cron: 00 1/6 * * *
 
 jobs:
-  deploy:
+  main:
 
     runs-on: ubuntu-latest
 
