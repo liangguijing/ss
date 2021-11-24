@@ -49,9 +49,10 @@ def get_subscribe_content():
         "email_code": "",
     }
     # 注册
-    session.post("https://feiniaoyun.tk/api/v1/passport/auth/register", data=data)
+    print(session.post("https://feiniaoyun.tk/api/v1/passport/auth/register", data=data).text)
     # 获取订阅链接
     resp = session.get("https://feiniaoyun.tk/api/v1/user/getSubscribe")
+    print(resp.json())
     subscribe_url = resp.json()["data"]["subscribe_url"]
     print("sub url:", subscribe_url)
     resp = session.get(subscribe_url)
@@ -60,7 +61,7 @@ def get_subscribe_content():
 
 def get_username():
     ts = str(int(time.time()))
-    name = ts + "." + ts[-3:]
+    name = ts + "Robot_" + ts[-3:]
     return name
 
 
