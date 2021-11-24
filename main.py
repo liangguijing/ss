@@ -24,7 +24,7 @@ def update_github_file(token, url, string):
         "Authorization": "token " + token,
     }
     data = {
-        "content": base64.b64encode(string).decode("utf-8"),
+        "content": base64.b64encode(string.encode("utf-8")).decode("utf-8"),
         "message": "update by actions",
         "sha": get_github_file_sha(token, url)
     }
@@ -64,5 +64,8 @@ def get_username():
     return name
 
 
-url1 = "https://feiniaoyun.tk/api/v1/client/subscribe?token=8bde8d5bb157dbd92305e204d2457c5f"
-print(get_username())
+if __name__ == "__main__":
+    token = input()
+    clash_url = "https://api.github.com/repos/liangguijing/ss/contents/clash"
+    content = get_subscribe_content()
+    update_github_file(token, clash_url, content)
